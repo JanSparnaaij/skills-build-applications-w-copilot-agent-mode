@@ -87,7 +87,7 @@ MONGO_CLIENT_SETTINGS = {
 }
 
 # Allow access to codespace URL and localhost
-ALLOWED_HOSTS = ['literate-fiesta-576g65jr4wf57q.github.dev', 'localhost']
+ALLOWED_HOSTS = ['literate-fiesta-576g65jr4wf57q-8000.app.github.dev', 'localhost']
 
 # Enable CORS for all origins
 INSTALLED_APPS += [
