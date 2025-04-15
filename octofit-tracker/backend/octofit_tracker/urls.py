@@ -15,12 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.http import JsonResponse
-from octofit_app import views
+from octofit_tracker import views
 
-# Define a root view
 urlpatterns = [
-    path('', lambda request: JsonResponse({"message": "Welcome to the Octofit Tracker API!"})),
+    path('', views.api_root, name='api-root'),
     path('admin/', admin.site.urls),
     path('api/users/', views.UserListView.as_view(), name='user-list'),
     path('api/teams/', views.TeamListView.as_view(), name='team-list'),

@@ -74,25 +74,20 @@ WSGI_APPLICATION = 'octofit_tracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# Revert to using djongo as the database engine
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'octofit_db',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'localhost',
-            'port': 27017,
-            'username': '',
-            'password': '',
-            'authSource': 'admin',
-        },
-    }
+# Revert to using pymongo for MongoDB integration
+DATABASES = {}
+
+# MongoDB connection settings
+MONGO_CLIENT_SETTINGS = {
+    'host': 'localhost',
+    'port': 27017,
+    'username': '',
+    'password': '',
+    'authSource': 'admin',
 }
 
-
-# Allow all hosts
-ALLOWED_HOSTS = ['*']
+# Allow access to codespace URL and localhost
+ALLOWED_HOSTS = ['literate-fiesta-576g65jr4wf57q.github.dev', 'localhost']
 
 # Enable CORS for all origins
 INSTALLED_APPS += [
