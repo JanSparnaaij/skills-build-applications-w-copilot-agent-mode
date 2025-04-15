@@ -76,18 +76,17 @@ WSGI_APPLICATION = 'octofit_tracker.wsgi.application'
 # Update database configuration to use pymongo
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.dummy',  # Dummy engine to bypass Django's built-in engines
+        'ENGINE': 'djongo',
         'NAME': 'octofit_db',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': 'localhost',
+            'port': 27017,
+            'username': '',
+            'password': '',
+            'authSource': 'admin',
+        },
     }
-}
-
-# MongoDB connection settings
-MONGO_CLIENT_SETTINGS = {
-    'host': 'localhost',
-    'port': 27017,
-    'username': '',
-    'password': '',
-    'authSource': 'admin',
 }
 
 # Enable CORS
