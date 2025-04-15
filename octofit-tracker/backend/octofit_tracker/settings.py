@@ -74,23 +74,26 @@ WSGI_APPLICATION = 'octofit_tracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# Update database configuration to use pymongo
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'octofit_db',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'localhost',
-            'port': 27017,
-            'username': '',
-            'password': '',
-            'authSource': 'admin',
-        },
-    }
+# Remove djongo and use pymongo directly
+DATABASES = {}
+
+# MongoDB connection settings
+MONGO_CLIENT_SETTINGS = {
+    'host': 'localhost',
+    'port': 27017,
+    'username': '',
+    'password': '',
+    'authSource': 'admin',
 }
 
-# Enable CORS
+# Custom database router for MongoDB
+DATABASE_ROUTERS = ['octofit_tracker.mongo_router.MongoRouter']
+
+
+# Allow all hosts
+ALLOWED_HOSTS = ['*']
+
+# Enable CORS for all origins
 INSTALLED_APPS += [
     'corsheaders',
 ]
@@ -101,6 +104,20 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+    'x-csrftoken',
+    'x-requested-with',
+]
 
 
 # Password validation
